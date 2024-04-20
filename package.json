@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev src/server.ts",
-    "build": "tsc"
+    "build": "tsoa spec-and-routes && tsc",
+    "start": "tsoa spec-and-routes && tsc && node dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -15,10 +15,12 @@
     "@types/node": "^20.12.7",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
+    "joi": "^17.12.3",
     "sequelize": "^6.37.3",
     "sequelize-typescript": "^2.1.6",
     "sqlite3": "^5.1.7",
     "swagger-ui-express": "^5.0.0",
+    "ts-node-dev": "^2.0.0",
     "tsoa": "^6.2.0"
   },
   "devDependencies": {
