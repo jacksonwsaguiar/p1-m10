@@ -28,3 +28,7 @@ Certifique-se de ter instalado em sua máquina:
 ## Documentação Swagger
 
 A documentação Swagger está disponível em http://localhost:3000/docs, onde você pode explorar e testar os endpoints da API interativamente.
+
+## Coleção Insomnia
+
+Arquivo "Insomnia_collection.json" que se encontra na raiz do repositório.

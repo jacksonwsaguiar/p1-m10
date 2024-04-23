@@ -28,9 +28,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importStar(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
+const user_1 = require("./routes/user");
 const sequelize_typescript_1 = require("sequelize-typescript");
-// import { RegisterRoutes } from "./routes/user";
-const user_1 = require("./models/user");
+const user_2 = require("./models/user");
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const path_1 = __importDefault(require("path"));
 const app = (0, express_1.default)();
@@ -39,15 +39,14 @@ const sequelize = new sequelize_typescript_1.Sequelize({
     dialect: "sqlite",
     storage: "database.sqlite",
 });
-sequelize.addModels([user_1.User]);
+sequelize.addModels([user_2.User]);
 sequelize.sync({ force: true }).then(() => {
     console.log("Database & tables created!");
 });
 app.use((0, express_1.urlencoded)({
     extended: true,
 }));
-// app.use("/api", userRoutes);
-// RegisterRoutes(app)
+(0, user_1.RegisterRoutes)(app);
 app.use("/docs", swagger_ui_express_1.default.serve, async (_req, res) => {
     try {
         const swaggerDocument = await Promise.resolve(`${path_1.default.resolve(__dirname, '../dist/swagger.json')}`).then(s => __importStar(require(s)));

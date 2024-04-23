@@ -5,6 +5,7 @@ import {
   Controller,
   Delete,
   Get,
+  Patch,
   Path,
   Post,
   Put,

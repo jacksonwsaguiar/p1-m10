@@ -18,51 +18,51 @@ let UserController = class UserController extends tsoa_1.Controller {
     async create(data) {
         try {
             const { name, email, password } = data;
-            const newUser = await user_1.User.create({ name, email, password }); // Assuming Sequelize model is imported as User
+            const newUser = await user_1.User.create({ name, email, password });
             return newUser.toJSON();
         }
         catch (error) {
-            this.setStatus(500); // Set response status to 500 (Internal Server Error)
+            this.setStatus(500);
             throw new Error(error.message);
         }
     }
     async get() {
         try {
-            const users = await user_1.User.findAll(); // Assuming Sequelize model is imported as User
+            const users = await user_1.User.findAll();
             return users.map((user) => user.toJSON());
         }
         catch (error) {
-            this.setStatus(500); // Set response status to 500 (Internal Server Error)
+            this.setStatus(500);
             throw new Error(error.message);
         }
     }
     async delete(id) {
         try {
-            const user = await user_1.User.findByPk(id); // Assuming Sequelize model is imported as User
+            const user = await user_1.User.findByPk(id);
             if (!user) {
-                this.setStatus(404); // Set response status to 404 (Not Found)
+                this.setStatus(404);
                 throw new Error('User not found');
             }
             await user.destroy();
             return `User with ID ${id} deleted successfully`;
         }
         catch (error) {
-            this.setStatus(500); // Set response status to 500 (Internal Server Error)
+            this.setStatus(500);
             throw new Error(error.message);
         }
     }
     async update(id, data) {
         try {
-            const user = await user_1.User.findByPk(id); // Assuming Sequelize model is imported as User
+            const user = await user_1.User.findByPk(id);
             if (!user) {
-                this.setStatus(404); // Set response status to 404 (Not Found)
+                this.setStatus(404);
                 return null;
             }
             await user.update(data);
             return user.toJSON();
         }
         catch (error) {
-            this.setStatus(500); // Set response status to 500 (Internal Server Error)
+            this.setStatus(500);
             throw new Error(error.message);
         }
     }
