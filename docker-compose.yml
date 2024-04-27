@@ -7,10 +7,10 @@ services:
       dockerfile: ./nodejs/Dockerfile
     ports:
       - "3000:3000"
-    depends_on:
-      - db
-    environment:
-      - DATABASE_URL=sqlite:///./app/database.db
+    # depends_on:
+    #   - db
+    # environment:
+    #   - DATABASE_URL=sqlite:///./nodejs/database.db
       
   app-2:
     build:
@@ -18,13 +18,13 @@ services:
       dockerfile: ./fastapi/Dockerfile
     ports:
       - "8000:8000"
-    depends_on:
-      - db
-    environment:
-      - DATABASE_URL=sqlite:///./app/users.db
+    # depends_on:
+    #   - db
+    # environment:
+    #   - DATABASE_URL=sqlite:///./fastapi/users.db
 
-  db:
-    image: "sqlite"
-    volumes:
-      - ./app/users.db:/usr/src/app/users.db
-    command: "tail -f /dev/null"
+  # db:
+  #   image: "sqlite"
+  #   volumes:
+  #     - ./app/users.db:/usr/src/app/users.db
+  #   command: "tail -f /dev/null"
